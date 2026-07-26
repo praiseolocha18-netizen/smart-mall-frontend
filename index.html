@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Mall — A smarter place to shop</title>
+    <meta
+      name="description"
+      content="Browse curated stores, get personalised product picks, and check out seamlessly at Smart Mall."
+    />
+    <meta property="og:title" content="Smart Mall — A smarter place to shop" />
+    <meta
+      property="og:description"
+      content="Curated stores, personalised picks, one seamless checkout."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2563EB" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/home.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-header></div>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <div class="hero-copy reveal">
+            <span class="eyebrow">Directory · Level 01</span>
+            <h1>
+              The whole mall,<br /><span class="grad">one smart checkout.</span>
+            </h1>
+            <p class="lead">
+              Every store, every deal, every pick chosen for you. Smart Mall
+              learns what you like and puts it a tap away.
+            </p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="products.html">Start shopping</a>
+              <a class="btn btn-ghost" href="categories.html"
+                >Browse the directory</a
+              >
+            </div>
+            <ul class="hero-trust" aria-label="Highlights">
+              <li><strong>500+</strong> brands</li>
+              <li><strong>50k+</strong> products</li>
+              <li><strong>4.9★</strong> avg rating</li>
+            </ul>
+          </div>
+          <div class="hero-visual reveal" aria-hidden="true">
+            <div class="float-card glass" style="--d: 0s">
+              <div
+                class="fc-thumb"
+                style="background: linear-gradient(135deg, #2563eb, #14b8a6)"
+              ></div>
+              <div>
+                <small>Recommended for you</small><b>Aurora Wireless Buds</b
+                ><span class="price">₦42,000</span>
+              </div>
+            </div>
+            <div class="float-card glass" style="--d: 0.15s">
+              <div
+                class="fc-thumb"
+                style="background: linear-gradient(135deg, #f59e0b, #ef4444)"
+              ></div>
+              <div>
+                <small>Trending now</small><b>Solace Smartwatch</b
+                ><span class="price">₦89,500</span>
+              </div>
+            </div>
+            <div class="float-card glass" style="--d: 0.3s">
+              <div
+                class="fc-thumb"
+                style="background: linear-gradient(135deg, #8b5cf6, #2563eb)"
+              ></div>
+              <div>
+                <small>Best seller</small><b>Nimbus Backpack</b
+                ><span class="price">₦27,900</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURED CATEGORIES -->
+      <section class="section">
+        <div class="container">
+          <div class="sec-head reveal">
+            <span class="eyebrow">Directory · Level 02</span>
+            <h2>Shop by floor</h2>
+            <p class="lead">Jump straight to the aisle you want.</p>
+          </div>
+          <div class="grid cat-grid" data-categories>
+            <!-- rendered by home.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURED PRODUCTS -->
+      <section class="section" style="background: var(--surface-2)">
+        <div class="container">
+          <div class="sec-head reveal">
+            <span class="eyebrow">Featured</span>
+            <h2>Handpicked this week</h2>
+            <p class="lead">Fresh arrivals and staff favourites.</p>
+          </div>
+          <div class="grid product-grid" data-featured></div>
+          <div class="center" style="margin-top: 2rem">
+            <a class="btn btn-ghost" href="products.html">View all products</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY CHOOSE US -->
+      <section class="section">
+        <div class="container">
+          <div class="sec-head reveal">
+            <span class="eyebrow">Why Smart Mall</span>
+            <h2>Built to feel effortless</h2>
+          </div>
+          <div class="grid why-grid">
+            <article class="card why reveal">
+              <div class="why-ic">✨</div>
+              <h3>Personalised picks</h3>
+              <p>
+                Our recommendation engine studies what you browse and buy to
+                surface products you'll actually want.
+              </p>
+            </article>
+            <article class="card why reveal">
+              <div class="why-ic">🛡️</div>
+              <h3>Secure by design</h3>
+              <p>
+                JWT auth, encrypted passwords, and Paystack checkout keep every
+                order and payment protected.
+              </p>
+            </article>
+            <article class="card why reveal">
+              <div class="why-ic">⚡</div>
+              <h3>Fast everywhere</h3>
+              <p>
+                Lazy-loaded images, cached data, and a responsive grid that
+                stays smooth on mobile data.
+              </p>
+            </article>
+            <article class="card why reveal">
+              <div class="why-ic">🎁</div>
+              <h3>Rewards that add up</h3>
+              <p>
+                Earn points on every order and climb from Silver to Platinum for
+                better perks.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS COUNTER -->
+      <section class="section stats-band">
+        <div class="container grid stats-grid">
+          <div class="stat reveal">
+            <span class="stat-num" data-count="52000">0</span
+            ><small>Products listed</small>
+          </div>
+          <div class="stat reveal">
+            <span class="stat-num" data-count="18400">0</span
+            ><small>Happy customers</small>
+          </div>
+          <div class="stat reveal">
+            <span class="stat-num" data-count="512">0</span
+            ><small>Partner brands</small>
+          </div>
+          <div class="stat reveal">
+            <span class="stat-num" data-count="99">0</span
+            ><small>% on-time delivery</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEWSLETTER -->
+      <section class="section">
+        <div class="container">
+          <div class="newsletter glass reveal">
+            <div>
+              <h2>Never miss a deal</h2>
+              <p class="lead">
+                Get flash sales and new arrivals in your inbox. No spam,
+                unsubscribe anytime.
+              </p>
+            </div>
+            <form class="news-form" onsubmit="return Home.subscribe(event);">
+              <label class="sr-only" for="news">Email address</label>
+              <input
+                class="input"
+                id="news"
+                type="email"
+                placeholder="you@example.com"
+                required
+              />
+              <button class="btn btn-accent" type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-footer></div>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/home.js"></script>
+  </body>
+</html>

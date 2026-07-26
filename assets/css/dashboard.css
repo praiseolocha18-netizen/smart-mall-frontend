@@ -1,0 +1,18 @@
+/* ============ Customer dashboard ============ */
+.dash-cards { grid-template-columns: repeat(4, 1fr); margin-bottom: 2rem; }
+.dash-card { padding: 1.3rem; display: flex; flex-direction: column; gap: 0.2rem; }
+.dash-card small { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.dash-card b { font-family: var(--font-display); font-size: 1.8rem; }
+.dash-card span { font-size: 0.82rem; color: var(--text-muted); }
+.dash-card .up { color: #16A34A; font-weight: 600; }
+
+.dash-grid { display: grid; grid-template-columns: 1fr 300px; gap: 1.5rem; align-items: start; }
+.dash-links { display: grid; gap: 0.4rem; }
+.dash-links a { display: block; padding: 0.7rem 0.9rem; border-radius: var(--r-md); background: var(--surface-2); font-weight: 600; font-size: 0.92rem; transition: 0.2s; }
+.dash-links a:hover { background: var(--primary); color: #fff; }
+
+@media (max-width: 900px) {
+  .dash-cards { grid-template-columns: repeat(2, 1fr); }
+  .dash-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) { .dash-cards { grid-template-columns: 1fr 1fr; } }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories — Smart Mall</title>
+  <meta name="description" content="Browse all shopping categories at Smart Mall.">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/content.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div data-header></div>
+  <main id="main">
+
+    <section class="section"><div class="container">
+      <span class="eyebrow">Directory</span><h1 style="margin:.5rem 0 .4rem">Browse by floor</h1>
+      <p class="lead" style="margin-bottom:2rem">Every category in the mall, one tap away.</p>
+      <div class="grid cat-grid" id="allCats"></div>
+    </div></section>
+  </main>
+  <div data-footer></div>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/home.js"></script>
+<script>document.addEventListener("DOMContentLoaded",async ()=>{ if(window.MallData&&MallData.load){try{await MallData.load();}catch(e){}}const el=document.getElementById("allCats");el.innerHTML=MallData.categories.map(c=>`<a class="cat-card reveal in" href="products.html?cat=${c.id}" style="background:${c.bg}"><div><span>${c.name}</span><small>${c.count.toLocaleString()} items</small></div></a>`).join("");});</script>
+</body>
+</html>

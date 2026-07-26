@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create account — Smart Mall</title>
+  <meta name="description" content="Create your free Smart Mall account.">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body>
+  <div data-header></div>
+  <main class="auth-wrap">
+    <aside class="auth-visual">
+      <a class="brand" href="index.html"><span class="brand-mark">SM</span> Smart Mall</a>
+      <div>
+        <h2>Join a smarter way to shop.</h2>
+        <p class="auth-quote lead" style="color:rgba(255,255,255,.85)">Create an account in seconds and start collecting picks made just for you.</p>
+      </div>
+      <ul class="auth-features">
+        <li>Free forever — no subscription</li>
+        <li>Reward points from your first order</li>
+        <li>Wishlist across all your devices</li>
+      </ul>
+    </aside>
+
+    <section class="auth-form-side">
+      <div class="auth-card">
+        <h1>Create account</h1>
+        <p class="sub">Already have one? <a href="login.html">Sign in</a></p>
+        <form onsubmit="return Auth.register(event)" novalidate>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input class="input" id="name" type="text" autocomplete="name" required placeholder="Ada Obi">
+          </div>
+          <div class="field">
+            <label for="remail">Email</label>
+            <input class="input" id="remail" type="email" autocomplete="email" required placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="rpw">Password</label>
+            <div class="pw-wrap">
+              <input class="input" id="rpw" type="password" autocomplete="new-password" required placeholder="At least 8 characters" oninput="Auth.strength(this.value)">
+              <button type="button" class="pw-toggle" onclick="Auth.togglePw('rpw',this)">Show</button>
+            </div>
+            <p class="hint" id="pwStrength">Use 8+ characters with a mix of letters and numbers.</p>
+          </div>
+          <label class="check" style="margin-bottom:1rem"><input type="checkbox" id="agree" required> I agree to the <a href="terms.html" style="color:var(--primary)">Terms</a> &amp; <a href="privacy.html" style="color:var(--primary)">Privacy</a></label>
+          <p class="err" id="regErr"></p>
+          <button class="btn btn-primary btn-block" type="submit">Create account</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

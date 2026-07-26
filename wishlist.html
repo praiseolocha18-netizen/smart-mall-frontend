@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist — Smart Mall</title>
+  <meta name="description" content="Your saved products at Smart Mall.">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/content.css">
+  <link rel="stylesheet" href="assets/css/cart.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div data-header></div>
+  <main id="main">
+
+    <section class="section"><div class="container">
+      <span class="eyebrow">Your account</span><h1 style="margin:.5rem 0 2rem">Wishlist</h1>
+      <div class="grid product-grid" id="wishGrid"></div>
+      <div id="wishEmpty" class="center" hidden style="padding:3rem 0">
+        <div style="font-size:3rem">♡</div><h2>No saved items yet</h2>
+        <p class="lead">Tap the heart on any product to save it here.</p>
+        <a class="btn btn-primary" href="products.html" style="margin-top:1rem">Browse products</a>
+      </div>
+    </div></section>
+  </main>
+  <div data-footer></div>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/home.js"></script>
+<script>document.addEventListener("DOMContentLoaded",async ()=>{ if(window.MallData&&MallData.load){try{await MallData.load();}catch(e){}}
+  const fmt=n=>"₦"+n.toLocaleString("en-NG");
+  const ids=JSON.parse(localStorage.getItem("mall-wishlist")||"[]");
+  const items=ids.map(id=>MallData.products.find(p=>p.id===id)).filter(Boolean);
+  const grid=document.getElementById("wishGrid"),empty=document.getElementById("wishEmpty");
+  if(!items.length){grid.style.display="none";empty.hidden=false;return;}
+  grid.innerHTML=items.map(p=>{const c=MallData.categories.find(x=>x.id===p.cat);
+    return `<article class="card p-card"><a class="p-media" href="product.html?id=${p.id}"><div class="ph" style="background:${p.bg}"></div></a>
+    <div class="p-body"><span class="p-cat">${c?c.name:""}</span><a class="p-name" href="product.html?id=${p.id}">${p.name}</a>
+    <div class="p-foot"><span class="p-price">${fmt(p.price)}</span><button class="btn btn-primary p-add" onclick="Home.add(event,'${p.id}')">Add</button></div></div></article>`;
+  }).join("");
+});</script>
+</body>
+</html>
