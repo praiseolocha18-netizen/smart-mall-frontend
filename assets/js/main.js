@@ -11,47 +11,59 @@
    Leave it as an empty string ("") to run the site on mock data
    only, with no backend. Any page that already sets window.MALL_API
    itself (via an inline <script>) will keep its own value. */
-if (typeof window.MALL_API === 'undefined') {
-  window.MALL_API = 'http://localhost:5000';
+if (typeof window.MALL_API === "undefined") {
+  window.MALL_API = "https://smart-mall-backend.onrender.com";
 }
 
 const NAV_LINKS = [
-  { href: 'index.html', label: 'Home' },
-  { href: 'products.html', label: 'Products' },
-  { href: 'categories.html', label: 'Categories' },
-  { href: 'about.html', label: 'About' },
-  { href: 'contact.html', label: 'Contact' },
+  { href: "index.html", label: "Home" },
+  { href: "products.html", label: "Products" },
+  { href: "categories.html", label: "Categories" },
+  { href: "about.html", label: "About" },
+  { href: "contact.html", label: "Contact" },
 ];
 
 /* ---------- Theme ---------- */
-const THEME_KEY = 'mall-theme';
+const THEME_KEY = "mall-theme";
 function getTheme() {
-  return localStorage.getItem(THEME_KEY) ||
-    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  return (
+    localStorage.getItem(THEME_KEY) ||
+    (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+  );
 }
 function applyTheme(t) {
-  document.documentElement.setAttribute('data-theme', t);
+  document.documentElement.setAttribute("data-theme", t);
   localStorage.setItem(THEME_KEY, t);
-  const btn = document.querySelector('[data-theme-toggle]');
-  if (btn) btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  const btn = document.querySelector("[data-theme-toggle]");
+  if (btn)
+    btn.setAttribute(
+      "aria-label",
+      t === "dark" ? "Switch to light mode" : "Switch to dark mode",
+    );
 }
-function toggleTheme() { applyTheme(getTheme() === 'dark' ? 'light' : 'dark'); }
+function toggleTheme() {
+  applyTheme(getTheme() === "dark" ? "light" : "dark");
+}
 applyTheme(getTheme()); // apply immediately to avoid flash
 
 /* ---------- Cart count (localStorage stub until backend wired) ---------- */
 function cartCount() {
-  try { return (JSON.parse(localStorage.getItem('mall-cart') || '[]')).length; }
-  catch { return 0; }
+  try {
+    return JSON.parse(localStorage.getItem("mall-cart") || "[]").length;
+  } catch {
+    return 0;
+  }
 }
 
 /* ---------- Header ---------- */
 function renderHeader() {
-  const mount = document.querySelector('[data-header]');
+  const mount = document.querySelector("[data-header]");
   if (!mount) return;
-  const current = location.pathname.split('/').pop() || 'index.html';
-  const links = NAV_LINKS.map(l =>
-    `<a href="${l.href}" class="${l.href === current ? 'active' : ''}">${l.label}</a>`
-  ).join('');
+  const current = location.pathname.split("/").pop() || "index.html";
+  const links = NAV_LINKS.map(
+    (l) =>
+      `<a href="${l.href}" class="${l.href === current ? "active" : ""}">${l.label}</a>`,
+  ).join("");
 
   mount.innerHTML = `
     <header class="nav glass" role="banner">
@@ -84,18 +96,20 @@ function renderHeader() {
       </div>
     </header>`;
 
-  document.querySelector('[data-theme-toggle]').addEventListener('click', toggleTheme);
-  const toggle = document.getElementById('navToggle');
-  const nav = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
+  document
+    .querySelector("[data-theme-toggle]")
+    .addEventListener("click", toggleTheme);
+  const toggle = document.getElementById("navToggle");
+  const nav = document.getElementById("navLinks");
+  toggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(open));
   });
 }
 
 /* ---------- Footer ---------- */
 function renderFooter() {
-  const mount = document.querySelector('[data-footer]');
+  const mount = document.querySelector("[data-footer]");
   if (!mount) return;
   const y = new Date().getFullYear();
   mount.innerHTML = `
@@ -134,22 +148,35 @@ function renderFooter() {
 
 /* ---------- Scroll reveal ---------- */
 function initReveal() {
-  const els = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window) || !els.length) { els.forEach(e => e.classList.add('in')); return; }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-  }, { threshold: 0.12 });
-  els.forEach(e => io.observe(e));
+  const els = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window) || !els.length) {
+    els.forEach((e) => e.classList.add("in"));
+    return;
+  }
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    },
+    { threshold: 0.12 },
+  );
+  els.forEach((e) => io.observe(e));
 }
 
 /* ---------- Init ---------- */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
   renderFooter();
   initReveal();
 });
 
 /* PWA: register service worker */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () =>
+    navigator.serviceWorker.register("sw.js").catch(() => {}),
+  );
 }
